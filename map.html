@@ -22,7 +22,17 @@
           attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
         }).addTo(map);
 
-        let marker = L.marker([-7.80199, 110.364965]).addTo(map)
+        let leafletIcon = L.icon({
+          iconUrl:'./assets/star-icon.png',
+          shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+          iconSize: [50, 50],
+          shadowSize: [50,64],
+          iconAnchor:   [22, 94],
+          shadowAnchor: [4, 62],
+          popupAnchor:  [-3, -76]
+        })
+
+        let marker = L.marker([-7.80199, 110.364965],{icon: leafletIcon}).addTo(map)
         marker.bindPopup("<b>This should be Yogyakarta!<br> I'm a marker</b>").openPopup()
 
         let circle = L.circle([-7.80199, 110.464965], {
