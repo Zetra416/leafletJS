@@ -16,13 +16,31 @@
   <body>
     <div id="map">
       <script>
-        let map = L.map('map').setView([0,0],0);
+        let map = L.map('map').setView([-7.80199,110.364965],300);
 
         L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=kYUxO95fbDe4MUgyaWGW', {
           attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
         }).addTo(map);
 
         let marker = L.marker([-7.80199, 110.364965]).addTo(map)
+        marker.bindPopup("<b>This should be Yogyakarta!<br> I'm a marker</b>").openPopup()
+
+        let circle = L.circle([-7.80199, 110.464965], {
+          color: 'red',
+          fillColor:'#f03',
+          fillOpacity: 0.5,
+          radius: 500,
+        }).addTo(map)
+        circle.bindPopup("<b>ini bulet</b>")
+
+        let polygon = L.polygon([
+        [-7.802915,110.36361],
+        [-7.803096,110.365445],
+        [-7.805094,110.365262],
+        [-7.804903,110.363352]
+      ]).addTo(map)
+
+      polygon.bindPopup("<b>This is Polygon popup!</b>").openPopup()
       </script>
     </div>
   </body>
