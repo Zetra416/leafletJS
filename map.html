@@ -23,17 +23,41 @@
         }).addTo(map);
 
         let leafletIcon = L.icon({
-          iconUrl:'./assets/star-icon.png',
-          shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+          iconUrl:'./assets/icon2.png',
+          // shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
           iconSize: [50, 50],
-          shadowSize: [50,64],
-          iconAnchor:   [22, 94],
-          shadowAnchor: [4, 62],
-          popupAnchor:  [-3, -76]
+          // shadowSize: [50,64],
+          iconAnchor:   [25, 50],
+          // shadowAnchor: [4, 62],
+          // popupAnchor:  [-3, -76]
         })
 
-        let marker = L.marker([-7.80199, 110.364965],{icon: leafletIcon}).addTo(map)
-        marker.bindPopup("<b>This should be Yogyakarta!<br> I'm a marker</b>").openPopup()
+
+        //do multiple icons
+
+        // var LeafletIcon = L.Icon.extend({
+        //   option: {
+        //     // shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+        //     iconSize: [10,10],
+        //     shadowSize: [50,64],
+        //     iconAnchor:   [22, 94],
+        //     shadowAnchor: [4, 62],
+        //     popupAnchor:  [-3, -76]
+        //   }
+        // })
+
+        // let icon1 = new LeafletIcon({iconUrl: './assets/icon1.png' }),
+        // icon2 = new LeafletIcon({iconUrl: './assets/icon2.png' }),
+        // icon3 = new LeafletIcon({iconUrl: './assets/icon3.png'  })
+
+        var marker = L.marker([-7.80199, 110.364965],{icon: leafletIcon}).addTo(map)
+        marker.bindPopup("<b>This is icon2!<br> I'm a marker</b>").openPopup()
+
+        // var marker = L.marker([-6.90199, 110.364965],{icon: icon2}).addTo(map)
+        // marker.bindPopup("<b>This is icon2!<br> I'm a marker</b>").openPopup()
+        //
+        // var marker = L.marker([-7.60199, 110.364965],{icon: icon3}).addTo(map)
+        // marker.bindPopup("<b>This is Icon3!<br> I'm a marker</b>").openPopup()
 
         let circle = L.circle([-7.80199, 110.464965], {
           color: 'red',
