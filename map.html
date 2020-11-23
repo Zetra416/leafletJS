@@ -19,8 +19,22 @@
         let map = L.map('map').setView([-7.80199,110.364965],300);
 
         L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=kYUxO95fbDe4MUgyaWGW', {
-          attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+          attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+          tileSize: 512,
+          zoomOffset: -1
         }).addTo(map);
+
+        function fetchJSON(url) {
+          return fetch(url)
+          .then(function(response) {
+            return response.json();
+          })
+        }
+
+        let data = {"type":"FeatureCollection","features":[{"type":"Feature","id":"78e521ff-658b-48b7-aeae-73c05867a015","geometry":{"type":"Point","coordinates":[110.37750085,-7.76643437]},"properties":{"desc":"ini kawasan fakultas geografi","name":"fakultas geografi UGM"}},{"type":"Feature","id":"f427ba4b-1e1a-4297-a379-acad8871bbda","geometry":{"type":"Polygon","coordinates":[[[110.37799337,-7.76628459],[110.37791047,-7.76650443],[110.37786414,-7.76647786],[110.37782757,-7.76656724],[110.37788121,-7.76658415],[110.37783976,-7.76675568],[110.37796899,-7.76680158],[110.37812503,-7.76633049],[110.37799337,-7.76628459]]]},"properties":{"desc":"ini gedung fakultas geografi","name":"gedung geografi"}},{"type":"Feature","id":"0770b6cb-1d36-4ab6-ac48-beec9ee108fd","geometry":{"type":"LineString","coordinates":[[110.36457052,-7.80272325],[110.36709983,-7.7830237],[110.37496879,-7.78295409],[110.37602267,-7.77661941],[110.3760688,-7.77627017],[110.37617611,-7.77620762],[110.37627079,-7.77613883]]},"properties":{"name":""}},{"type":"Feature","id":"ead78eaf-01f3-4499-abad-43f53cbeb43a","geometry":{"type":"LineString","coordinates":[[110.37627079,-7.77613883],[110.37630235,-7.77606378]]},"properties":{"name":""}},{"type":"Feature","id":"8c28364d-33ba-4a7d-86b4-21ed97c3a198","geometry":{"type":"LineString","coordinates":[[110.37630235,-7.77606378],[110.37623154,-7.775829],[110.37604068,-7.77577145],[110.37588302,-7.77583722],[110.37575854,-7.77452993],[110.37567556,-7.77429149],[110.37516107,-7.77412705],[110.37623984,-7.77158646],[110.37809035,-7.76710543],[110.37728542,-7.76680122]]},"properties":{"name":""}},{"type":"Feature","id":"6022e3c3-8d45-4673-b440-d860da81e596","geometry":{"type":"LineString","coordinates":[[110.37728542,-7.76680122],[110.37723783,-7.76679193],[110.37733917,-7.76645932],[110.37748168,-7.76650011],[110.37750085,-7.76643437]]},"properties":{"desc":"jalan dari alun - alun ke kampus geografi ","name":""}}]}
+
+        let testGeo = L.geoJSON(data).addTo(map);
+        testGeo.bindPopup("<b>Ini kampusnya dea</b>")
 
         let leafletIcon = L.icon({
           iconUrl:'./assets/icon2.png',
